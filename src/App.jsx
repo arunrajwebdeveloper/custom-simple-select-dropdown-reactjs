@@ -80,7 +80,7 @@ function App() {
   };
 
   return (
-    <div class="wrapper">
+    <div className="wrapper">
       <div className="demo-wrapper">
         <h4 className="demo-display">{`You are selected ${
           selected ? selected.label : "Nothing"
