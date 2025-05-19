@@ -1,35 +1,100 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import SelectDropdown from "./selectDropdown/SelectDropdown";
+
+const options = [
+  {
+    label: "React",
+    value: "react",
+  },
+  {
+    label: "JavaScript",
+    value: "javascript",
+  },
+  {
+    label: "TypeScript",
+    value: "typescript",
+  },
+  {
+    label: "MongoDB",
+    value: "mongodb",
+  },
+  {
+    label: "Node.js",
+    value: "nodejs",
+  },
+  {
+    label: "Express.js",
+    value: "expressjs",
+  },
+  {
+    label: "Next.js",
+    value: "nextjs",
+  },
+  {
+    label: "NestJS",
+    value: "nestjs",
+  },
+  {
+    label: "Vite",
+    value: "vite",
+  },
+  {
+    label: "Redux Toolkit",
+    value: "redux-toolkit",
+  },
+  {
+    label: "Bootstrap",
+    value: "bootstrap",
+  },
+  {
+    label: "Sass",
+    value: "sass",
+  },
+  {
+    label: "HTML5",
+    value: "html5",
+  },
+  {
+    label: "CSS3",
+    value: "css3",
+  },
+  {
+    label: "MySQL",
+    value: "mysql",
+  },
+  {
+    label: "Docker",
+    value: "docker",
+  },
+  {
+    label: "Firebase",
+    value: "firebase",
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selected, setSelected] = useState(null);
+
+  const handleOnChange = (e) => {
+    setSelected(e);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div class="wrapper">
+      <div className="demo-wrapper">
+        <h4 className="demo-display">{`You are selected ${
+          selected ? selected.label : "Nothing"
+        }`}</h4>
+
+        {/* Component call */}
+        <SelectDropdown
+          selected={selected}
+          data={options}
+          onChange={handleOnChange}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
